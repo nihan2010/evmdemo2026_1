@@ -1,0 +1,343 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #F8FAFC;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+  width: 100%;
+  background-color: #F8FAFC;
+}
+
+
+.header {
+  background-color: #FFFFFF;
+  padding: 20px 20px 16px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #E2E8F0;
+  z-index: 4;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 800;
+  color: #111827;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 800;
+  color: #111827;
+  margin-right: 14px; /* Pull left relative to blue tab */
+}
+
+.ready-led {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #D1D5DB; /* Unlit grey state */
+  box-shadow: inset -1px -1px 3px rgba(0,0,0,0.2);
+  transition: all 0.3s ease-in-out;
+}
+
+@keyframes glowing {
+  0% { box-shadow: inset -1px -1px 3px rgba(0,0,0,0.2), 0 0 4px rgba(5, 150, 105, 0.4); }
+  50% { box-shadow: inset -1px -1px 3px rgba(0,0,0,0.2), 0 0 12px rgba(5, 150, 105, 0.8), 0 0 20px rgba(5, 150, 105, 0.5); }
+  100% { box-shadow: inset -1px -1px 3px rgba(0,0,0,0.2), 0 0 4px rgba(5, 150, 105, 0.4); }
+}
+
+.ready-led.on {
+  background-color: #059669;
+  box-shadow: inset -1px -1px 3px rgba(0,0,0,0.2), 0 0 4px rgba(5, 150, 105, 0.4);
+  animation: glowing 1.5s infinite;
+}
+
+.unit-icon {
+  width: 9px;
+  height: 18px;
+  border-radius: 4.5px;
+  background-color: #111827;
+}
+
+.ballot-container-wrapper {
+  padding: 16px 16px 0 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.ballot-container {
+  background-color: #F3F4F6;
+  border-radius: 12px;
+  border: 1px solid #D1D5DB;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+}
+
+.ballot-row {
+  display: flex;
+  height: 66px;
+  border-bottom: 1.5px solid #FFFFFF;
+}
+
+.ballot-row:last-child {
+  border-bottom: none;
+}
+
+.row-left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+  border-right: 1.5px solid #FFFFFF;
+}
+
+.serial {
+  width: 24px;
+  font-weight: 700;
+  font-size: 14px;
+  color: #374151;
+}
+
+.candidate-name {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.candidate-name span {
+  display: inline-block;
+  color: transparent;
+  text-shadow: 0 0 6px rgba(107, 114, 128, 0.7);
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+.candidate-name.candidate-dark span {
+  text-shadow: 0 0 4px rgba(31, 41, 55, 0.9);
+}
+
+.candidate-details {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  margin-left: 2px;
+  overflow: hidden;
+  gap: 4px;
+}
+
+.candidate-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.malayalam-name {
+  font-size: 13px;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.2;
+}
+
+.english-name {
+  font-size: 11px;
+  font-weight: 600;
+  color: #111827;
+  letter-spacing: -0.2px;
+}
+
+.candidate-photo, .candidate-symbol {
+  width: 42px;
+  height: 52px;
+  border: 1px solid #9CA3AF;
+  border-radius: 4px;
+  object-fit: cover;
+  background-color: #FFF;
+}
+
+.row-right {
+  width: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  background-color: #F3F4F6;
+}
+
+.arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow-active path {
+  fill: #EF4444 !important; /* Brighter glowing red */
+  filter: drop-shadow(0 0 6px rgba(239, 68, 68, 0.9));
+}
+
+.button-pill {
+  width: 44px;
+  height: 26px;
+  border-radius: 13px;
+  background-color: #A1A1AA;
+  box-shadow: inset 1px 2px 4px rgba(0,0,0,0.2), 0 1px 1px #FFF;
+}
+
+.button-pill.active {
+  background-color: #2563EB;
+  box-shadow: inset 1px 2px 4px rgba(0,0,0,0.3), 0 1px 1px #FFF;
+}
+
+.footer-text {
+  text-align: center;
+  color: #1D4ED8;
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 20px;
+  margin-bottom: 6px;
+}
+
+.footer-text a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.footer-text a:hover {
+  text-decoration: underline;
+}
+
+.credits-text {
+  text-align: center;
+  color: #6B7280;
+  font-size: 11px;
+  font-weight: 500;
+  margin-bottom: 24px;
+}
+
+.credits-text a {
+  color: #4B5563;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.credits-text a:hover {
+  color: #111827;
+}
+
+.bottom-spacer {
+  flex: 1;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.modal-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content {
+  background: #FFFFFF;
+  border-radius: 20px;
+  padding: 32px 24px;
+  width: 85%;
+  max-width: 320px;
+  text-align: center;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  transform: scale(0.9);
+  transition: transform 0.3s ease-in-out;
+}
+
+.modal-overlay.show .modal-content {
+  transform: scale(1);
+}
+
+.success-icon {
+  margin-bottom: 16px;
+}
+
+.modal-content h2 {
+  margin: 0 0 24px 0;
+  font-size: 20px;
+  color: #111827;
+}
+
+.voted-candidate {
+  background: #F3F4F6;
+  border: 1px solid #E5E7EB;
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.voted-images {
+  display: flex;
+  gap: 12px;
+}
+
+.voted-photo, .voted-symbol {
+  width: 50px;
+  height: 60px;
+  border: 1px solid #9CA3AF;
+  border-radius: 4px;
+  object-fit: cover;
+  background-color: #FFF;
+}
+
+.close-btn {
+  background-color: #2563EB;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-size: 15px;
+  font-weight: 600;
+  width: 100%;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.close-btn:hover {
+  background-color: #1D4ED8;
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Vote for Kunnath Muhammed | EVM</title>
+  
+  <!-- Primary Meta Tags -->
+  <meta name="title" content="Vote for Kunnath Muhammed S/o Ali Haji">
+  <meta name="description" content="Interactive Electronic Voting Machine (EVM) demo representing candidate Kunnath Muhammed S/o Ali Haji.">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nihannajeeb.in/">
+  <meta property="og:title" content="Vote for Kunnath Muhammed S/o Ali Haji">
+  <meta property="og:description" content="Interactive Electronic Voting Machine (EVM) demo representing candidate Kunnath Muhammed S/o Ali Haji.">
+  <meta property="og:image" content="images/candidate_photo.png">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://nihannajeeb.in/">
+  <meta property="twitter:title" content="Vote for Kunnath Muhammed S/o Ali Haji">
+  <meta property="twitter:description" content="Interactive Electronic Voting Machine (EVM) demo representing candidate Kunnath Muhammed S/o Ali Haji.">
+  <meta property="twitter:image" content="images/candidate_photo.png">
+
+  <!-- Website Icon / Favicon -->
+  <link rel="icon" type="image/png" href="images/candidate_photo.png">
+  <link rel="apple-touch-icon" href="images/candidate_photo.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="app-container">
+    <div class="header">
+      <div class="header-left">
+        <span>Ready</span>
+        <div class="ready-led"></div>
+      </div>
+      <div class="header-right">
+        <span>Ballot Unit</span>
+        <div class="unit-icon"></div>
+      </div>
+    </div>
+    
+    <div class="ballot-container-wrapper">
+      <div class="ballot-container" id="ballot-container">
+        <!-- Rows are injected by script.js -->
+      </div>
+    </div>
+
+    <div class="footer-text">
+       <a href="https://wa.me/918547137703?text=Hello,%20I%20really%20liked%20your%20EVM%20demo%20website.%20Would%20it%20be%20possible%20for%20you%20to%20create%20a%20similar%20one%20for%20my%20constituency?" target="_blank" rel="noopener noreferrer">want to make your ballot ?</a>
+    </div>
+    
+    <div class="credits-text">
+      Created by <a href="https://nihannajeeb.in" target="_blank" rel="noopener noreferrer">nihan najeeb</a>
+    </div>
+    
+    <div class="bottom-spacer"></div>
+
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="success-modal">
+      <div class="modal-content">
+        <div class="success-icon">
+          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+          </svg>
+        </div>
+        <h2>Voted Successfully!</h2>
+        
+        <div class="voted-candidate">
+          <div class="voted-images">
+            <img src="images/candidate_photo.png" class="voted-photo" alt="Candidate">
+            <img src="images/symbol.png" class="voted-symbol" alt="Symbol">
+          </div>
+          <div class="voted-names">
+            <div class="malayalam-name">കുന്നത്ത് മുഹമ്മദ് S/o ആലി ഹാജി</div>
+            <div class="english-name">Kunnath Muhammed S/o Ali Haji</div>
+          </div>
+        </div>
+
+        <button id="close-modal" class="close-btn">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
